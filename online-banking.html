@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://zero.webappsecurity.com/online-banking.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Zero - Free Access to Online Banking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="shortcut icon" href="./downloaded_files/img/dollar-ico.png" type="image/png">
+
+
+    <link type="text/css" rel="stylesheet" href="./downloaded_files/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="./downloaded_files/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="./downloaded_files/main.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="./downloaded_files/jquery-1.7.2.min.js"></script>
+        <script src="./downloaded_files/bootstrap.min.js"></script>
+
+    <script src="./downloaded_files/placeholders.min.js"></script>
+    <script type="text/javascript">
+        Placeholders.init({
+            live: true, // Apply to future and modified elements too
+            hideOnFocus: true // Hide the placeholder when the element receives focus
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ajaxError(function errorHandler(event, xhr, ajaxOptions, thrownError) {
+            if (xhr.status == 403) {
+                window.location.reload();
+            }
+        });
+    </script>
+</head>
+<body contenteditable="false">
+    <div class="wrapper">
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a href="./index.html" class="brand">Zero Bank</a>
+
+                <div>
+                    <ul class="nav float-right">
+                        <li>
+                            <form action="./search.html" class="navbar-search pull-right" style="padding-right: 20px">
+                                <input type="text" id="searchTerm" name="searchTerm" class="search-query" placeholder="Search">
+                            </form>
+                         </li>
+
+                         <!-- signInElem  -->
+                         <li class="signInElem" hidden>
+                            <button id="signin_button" type="button" class="signin btn btn-info">
+                                <i class="icon-signin"></i>Signin
+                            </button>
+                        </li>
+
+                        <!-- elems for logged user  -->
+                        <li class="dropdown infoForLoggedUser" hidden>
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-cog"></i>
+                                Settings
+                                <b class="caret"></b>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li class="disabled"><a>Account Settings</a></li>
+                                <li class="disabled"><a>Privacy Settings</a></li>
+                                <li class="divider"></li>
+                                <li><a id="help_link" href="./help.html">Help</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown infoForLoggedUser" hidden>
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-user"></i>username
+                                    <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="disabled"><a>My Profile</a></li>
+                                <li class="divider"></li>
+                                <li><a id="logout_link" href="./logout.html">Logout</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function() {
+            var path = "/";
+
+            $("#signin_button").click(function(event) {
+                event.preventDefault();
+                window.location.href = path + "login" + ".html";
+            });
+        });
+    </script>
+
+        <div class="container">
+            <div class="top_offset">
+                    <div class="row">
+    <div class="span12">
+        <div id="nav" class="clearfix">
+            <ul id="pages-nav">
+                <li id="homeMenu"><div><strong>Home</strong></div></li>
+                <li id="onlineBankingMenu" class="active"><div><strong>Online Banking</strong></div></li>
+                <li id="feedback"><div><strong>Feedback</strong></div></li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            var path = "/";
+
+            var featureIdToName = {
+                "index": "homeMenu",
+                "online-banking": "onlineBankingMenu",
+                "feedback": "feedback"
+            };
+
+            if (document.location.href.match(".*" + path + "$") != null) {
+                $("#homeMenu").addClass("active");
+            } else {
+                $.each(featureIdToName, function(featureId, featureName) {
+                    if (document.location.href.indexOf(featureId + ".html") >= 0) {
+                        $("#" + featureName).addClass("active");
+                    }
+                });
+            }
+
+            $.each(featureIdToName, function(featureId, featureName) {
+                $("#nav").on("click", "li[id='" + featureName + "']", function(event) {
+                    event.preventDefault();
+                    window.location.href = path + featureId + ".html";
+                });
+            });
+        });
+    </script>
+                    </div>
+
+<div class="row">
+    <div class="span12">
+        <div class="hero-unit hero-home">
+            <div class="container">
+                <div class="row">
+                    <div class="span6">
+                        <h1>Online Banking</h1>
+                        <p>
+                            Pay bills easily
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span12" style="text-align: center">
+        <h3>Our Bank is trusted by over 1,000,000 customers world wide.
+                <a href="./login.html">Sign in</a> now!
+        </h3>
+    </div>
+</div>
+
+<div id="online_banking_features">
+    <div class="row margin7top">
+        <div class="span4">
+            <h4>
+                <i class="icon icon-list-alt"></i>
+                <span class="headers" id="account_summary_link">Account Summary</span>
+            </h4>
+            <hr class="content-divider">
+            <p>See all of your account balances at a glance.</p>
+        </div>
+
+        <div class="span4">
+            <h4>
+                <i class="icon icon-shopping-cart"></i>
+                <span class="headers" id="account_activity_link">Account Activity</span>
+            </h4>
+            <hr class="content-divider">
+            <p>View the most up-to-date listings of your deposits, withdrawals, interest payments, and other transactions.</p>
+        </div>
+
+        <div class="span4">
+            <h4><i class="icon icon-retweet"></i><span class="headers" id="transfer_funds_link">Transfer Funds</span></h4>
+            <hr class="content-divider">
+            <p>Safely and securely transfer funds between accounts.</p>
+        </div>
+    </div>
+
+    <div class="row margin7top">
+        <div class="span4">
+            <h4><i class="icon icon-credit-card"></i><span class="headers" id="pay_bills_link">Pay Bills</span></h4>
+            <hr class="content-divider">
+            <p>Pay your bills quickly and securely online.</p>
+        </div>
+
+        <div class="span4">
+            <h4><i class="icon icon-sitemap"></i><span class="headers" id="money_map_link">My Money Map</span></h4>
+            <hr class="content-divider">
+            <p>Use Zero to set up and monitor your personalized money map. A money map is an easy-to-use online tool that helps you manage your finances efficiently.</p>
+        </div>
+
+        <div class="span4">
+            <h4><i class="icon icon-edit"></i><span class="headers" id="online_statements_link">Online Statements</span></h4>
+            <hr class="content-divider">
+            <p>View the statement history of all your accounts.</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function() {
+        var path = "/pages/bank/";
+
+        var featureIdToName = {
+            "account_summary_link": "account-summary",
+            "account_activity_link": "account-activity",
+            "transfer_funds_link": "transfer-funds",
+            "pay_bills_link": "pay-bills",
+            "money_map_link": "money-map",
+            "online_statements_link": "online-statements",
+            "brokerage_link": "brokerage",
+            "alerts_link": "alerts",
+            "foreign_exchange_link": "foreign-exchange"
+        }
+        $.each(featureIdToName, function(featureId, featureName) {
+            $("#online_banking_features").on("click", "span[id='" + featureId + "']", function(event) {
+                event.preventDefault();
+                window.location.href = path + featureName + ".html";
+            });
+        });
+    });
+</script>
+            </div>
+        </div>
+
+        <div class="clearfix push"></div>
+    </div>
+
+<div class="extra">
+    <div class="extra-inner">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <ul>
+                        <li><span id="download_webinspect_link">Download WebInspect</span></li>
+                    </ul>
+                </div>
+
+                <div class="span4">
+                    <ul>
+                        <li><span id="terms_of_use_link">Terms of Use</span></li>
+                    </ul>
+                </div>
+
+                <div class="span4">
+                    <ul>
+                        <li><span id="contact_hp_link">Contact Micro Focus</span></li>
+                        <li><span id="privacy_statement_link">Privacy Statement</span></li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="disclaimer span12">
+                    The Free Online Bank Web site is published by Micro Focus Fortify for the sole purpose of demonstrating
+                    the functionality and effectiveness of Micro Focus Fortify’s WebInspect products in detecting and reporting
+                    Web application vulnerabilities. This site is not a real banking site and any similarities to third party products
+                    and/or Web sites are purely coincidental. This site is provided "as is" without warranty of any kind,
+                    either express or implied. Micro Focus Fortify does not assume any risk in relation to your use of this Web site.
+                    Use of this Web site indicates that you have read and agree to Micro Focus Fortify’s Terms of Use found at
+                    <a href="https://www.microfocus.com/about/legal/#privacy" target="_blank">https://www.microfocus.com/about/legal/#privacy</a>
+                    and Micro Focus Fortify’s Online Privacy Statement found at
+                    <a href="https://www.microfocus.com/about/legal/#privacy" target="_blank">https://www.microfocus.com/about/legal/#privacy</a>.
+
+                    <br><br>
+
+                    Copyright © 2012-2018, Micro Focus Development Company. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var path = "/";
+
+        var attachClickHandler = function(selector, handler) {
+$(".extra").on('click', selector, handler);
+        }
+
+        var footerLinks = {
+            "download_webinspect_link": { absolute: true, page: "https://software.microfocus.com/en-us/products/webinspect-dynamic-analysis-dast/overview" },
+            "contact_hp_link" : { absolute: true, page: "https://support.fortify.com" },
+            "privacy_statement_link": { absolute: true, page: "https://www.microfocus.com/about/legal/#privacy" },
+            "terms_of_use_link": { absolute: true, page: "https://www.microfocus.com/about/legal/" }
+        };
+
+        $.each(footerLinks, function(linkId, link) {
+            attachClickHandler('span[id="' + linkId + '"]', function(event) {
+                event.preventDefault();
+                if (link.absolute) {
+                    window.location.href = link.page;
+                } else {
+                    window.location.href = path + link.page + ".html";
+                }
+            });
+        });
+    });
+</script>
+
+<script src="./js/checkAccess.js"></script>
+</body>
+</html>
